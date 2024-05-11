@@ -13,7 +13,7 @@ class Pantalla {
             restar: '-'     }
     }
     borrarTodosValores() {
-        this.valorActual = '';
+        this.valorActual = '0';
         this.valorAnterior = '';
         this.tipoOperacion = undefined;
         this.imprimirValores();
@@ -32,11 +32,6 @@ class Pantalla {
         this.imprimirValores();
     }
 
-    insertarNumero(numero) {
-        if(numero === ',' && this.valorActual.includes(',')) return;
-        this.valorActual = this.valorActual.toString() + numero.toString();
-        this.imprimirValores();
-    }
 
     imprimirValores() {
         this.pantallaValorActual.textContent = this.valorActual;
@@ -46,10 +41,26 @@ class Pantalla {
     calculoMatematico() {
         const valorAnterior = parseFloat(this.valorAnterior);
         const valorActual = parseFloat(this.valorActual);
-
-        if( isNaN(valorActual) || isNaN(valorAnterior) ) return;
-        this.valorActual = this.calculadora[this.tipoOperacion](valorAnterior, valorActual)
+    
+        if (isNaN(valorActual) || isNaN(valorAnterior)) return;
+    
+        if (this.tipoOperacion === 'restar' && valorAnterior === valorActual) {
+            this.valorActual = '0';
+        } else {
+            this.valorActual = this.calculadora[this.tipoOperacion](valorAnterior, valorActual);
+        }
     }
 
+    insertarNumero(numero) {
+        if(numero === ',' && this.valorActual.includes(',')) return;
+        if(this.valorActual === '0') {
+            this.valorActual = numero.toString();
+        } else {
+            this.valorActual = this.valorActual.toString() + numero.toString();
+        }
+        this.imprimirValores();
+    }
+    
+    
 
 }
