@@ -45,19 +45,27 @@ class Pantalla {
         this.pantallaValorAnterior.textContent = `${this.valorAnterior} ${this.signos[this.tipoOperacion] || ''}`; // Mostrar el valor anterior y el signo de la operación en la pantalla
     }
 
-    // Método para realizar el cálculo matemático
     calculoMatematico() {
+        // Convertir los valores anteriores y actuales a números
         const valorAnterior = parseFloat(this.valorAnterior); // Convertir el valor anterior a número
         const valorActual = parseFloat(this.valorActual); // Convertir el valor actual a número
     
-        if (isNaN(valorActual) || isNaN(valorAnterior)) return; // Salir si uno de los valores no es un número
+        // Verificar si alguno de los valores no es un número
+        if (isNaN(valorActual) || isNaN(valorAnterior)) return; // Salir de la función si uno de los valores no es un número
     
+        // Verificar si la operación es restar y ambos valores son iguales
         if (this.tipoOperacion === 'restar' && valorAnterior === valorActual) {
             this.valorActual = '0'; // En caso de operación de resta con los mismos valores, el resultado es cero
+        }
+        // Verificar si la operación es dividir y ambos valores son cero
+        else if (this.tipoOperacion === 'dividir' && valorAnterior === 0 && valorActual === 0) {
+            this.valorActual = 'No se divide 0 entre 0.'; // Mostrar un mensaje de error si se intenta dividir cero entre cero
         } else {
-            this.valorActual = this.calculadora[this.tipoOperacion](valorAnterior, valorActual); // Realizar la operación correspondiente
+            // Realizar la operación matemática normalmente
+            this.valorActual = this.calculadora[this.tipoOperacion](valorAnterior, valorActual);
         }
     }
+    
 
     // Método para insertar un número en la pantalla
     insertarNumero(numero) {
