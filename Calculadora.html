@@ -3,39 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="Style.css">
+    
+    <!-- Fuentes Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    
     <script src="Pantalla.js" type="text/javascript"></script>
     <script src="Calculadora.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript" defer></script>
+    
     <title>Super Calculadora</title>
 </head>
 <body>
+    <!-- Contenedor principal -->
     <div class="contenedor">
+        <!-- Calculadora -->
         <div class="calculadora">
+            <!-- Pantalla de la calculadora -->
             <div class="pantalla">
+                <!-- Valor anterior -->
                 <div id="valor-anterior"></div>
+                <!-- Valor actual -->
                 <div id="valor-actual">0</div>
             </div>
+            <!-- Botón para borrar todos los valores -->
             <button onclick="pantalla.borrarTodosValores()" class="colores-operadores borrar-todo col-2">C</button>
+            <!-- Botón para borrar el último dígito -->
             <button onclick="pantalla.borrar()" class="colores-operadores operador">&larr;</button>
+            <!-- Botón para la operación de división -->
             <button value="dividir" class="colores-operadores operador">&divide;</button>
+            <!-- Botones de los dígitos -->
             <button class="digitos">7</button>
             <button class="digitos">8</button>
             <button class="digitos">9</button>
+            <!-- Botón para la operación de multiplicación -->
             <button value="multiplicar" class="colores-operadores operador">&times;</button>
             <button class="digitos">4</button>
             <button class="digitos">5</button>
             <button class="digitos">6</button>
+            <!-- Botón para la operación de resta -->
             <button value="restar" class="colores-operadores operador">&minus;</button>
             <button class="digitos">1</button>
             <button class="digitos">2</button>
             <button class="digitos">3</button>
+            <!-- Botón para la operación de suma -->
             <button value="sumar" class="colores-operadores operador">&plus;</button>
+            <!-- Botón para el dígito cero -->
             <button class="colores-operadores cero col-2 digitos">0</button>
+            <!-- Botón para la coma decimal -->
             <button class="digitos">&comma;</button>
+            <!-- Botón para la operación de igual -->
             <button value="igual" class="colores-operadores igual operador">&equals;</button>
         </div>
     </div>
